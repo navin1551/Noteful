@@ -1,0 +1,10 @@
+.Main-heading {
+  text-align: center;
+}
+
+main {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

@@ -1,0 +1,9 @@
+.Individual-note {
+  border: 1px solid black;
+  height: 80px;
+  width: 350px;
+}
+
+p {
+  margin: 10px;
+}
