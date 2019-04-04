@@ -1,16 +1,21 @@
 import React from "react";
-import Store from "../Store";
 import Folder from "./Folder";
+import "./FolderList.css";
 
 class FolderList extends React.Component {
   render() {
-    let folders = Store.folders.map((folder, id) => (
-      <Folder key={folder.id} title={folder.name} />
+    let folders = this.props.folders.map((folder, id) => (
+      <Folder key={folder.id} title={folder.name} id={folder.id} />
     ));
     return (
-      <div>
+      <div className="Folder-list-area">
         {folders}
-        <button>+ Folder</button>
+        <button
+          className="Add-folder-button"
+          onClick={() => console.log("+Folder tester")}
+        >
+          + Folder
+        </button>
       </div>
     );
   }

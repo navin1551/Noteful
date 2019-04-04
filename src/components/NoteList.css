@@ -1,0 +1,17 @@
+.Note-list-area {
+  margin-bottom: 50px;
+  margin-left: 10px;
+  position: absolute;
+  right: 42.5%;
+  top: 20%;
+}
+
+.Add-note-button {
+  position: relative;
+  left: 40%;
+  border-radius: 50%;
+  height: 75px;
+  width: 75px;
+  margin-top: 25px;
+  border: 2px solid black;
+}

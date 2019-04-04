@@ -7,3 +7,8 @@
 p {
   margin: 10px;
 }
+
+.Remove-button {
+  position: relative;
+  left: 73%;
+}
