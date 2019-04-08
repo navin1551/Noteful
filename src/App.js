@@ -4,6 +4,7 @@ import FolderList from "./components/FolderList";
 import NoteList from "./components/NoteList";
 import Store from "./Store";
 import "./App.css";
+import NoteContent from "./components/NoteContent";
 
 class App extends React.Component {
   state = {
@@ -19,57 +20,68 @@ class App extends React.Component {
     console.log("add note test");
   };
 
-  removeNoteHandle = () => {
-    "remove note test";
+  removeNoteHandle = id => {
+    let updatedNotes = this.state.notes.filter(note => note.id !== id);
+    this.setState({
+      notes: updatedNotes
+    });
   };
 
   render() {
     return (
       <div className="App">
-        <header className="Main-heading">
+        <header>
           <Link to={"/"}>Noteful</Link>
         </header>
-        <main>
-          <Route
-            exact
-            path="/"
-            render={() => {
-              return (
-                <div>
+        <Route
+          exact
+          path="/"
+          render={() => {
+            return (
+              <div className="Flex-container">
+                <nav>
                   <FolderList folders={this.state.folders} />
-                  <NoteList notes={this.state.notes} />
-                </div>
-              );
-            }}
-          />
-          <Route
-            path="/folder/:folderId"
-            render={({ match }) => {
-              let filterNotes = this.state.notes.filter(
-                note => note.folderId === match.params.folderId
-              );
-              return (
-                <div>
+                </nav>
+                <main>
+                  <NoteList
+                    removeNoteHandle={this.removeNoteHandle}
+                    notes={this.state.notes}
+                  />
+                </main>
+              </div>
+            );
+          }}
+        />
+        <Route
+          path="/folder/:folderId"
+          render={({ match }) => {
+            let filterNotes = this.state.notes.filter(
+              note => note.folderId === match.params.folderId
+            );
+            return (
+              <div>
+                <nav>
                   <FolderList folders={this.state.folders} />
-                  <NoteList notes={filterNotes} />
-                </div>
-              );
-            }}
-          />
-          <Route
-            path="/note/:noteId"
-            render={({ match }) => {
-              let filterNotes = this.state.notes.filter(
-                note => note.id === match.params.noteId
-              );
-              return (
-                <div>
-                  <NoteList notes={filterNotes} />
-                </div>
-              );
-            }}
-          />
-        </main>
+                </nav>
+                <main>
+                  <NoteList
+                    notes={filterNotes}
+                    removeNoteHandle={this.removeNoteHandle}
+                  />
+                </main>
+              </div>
+            );
+          }}
+        />
+        <Route
+          path="/note/:noteId"
+          render={({ match }) => {
+            let filteredNote = this.state.notes.filter(
+              note => note.id === match.params.noteId
+            );
+            return <NoteContent filteredNote={filteredNote} />;
+          }}
+        />
       </div>
     );
   }
