@@ -8,6 +8,7 @@ class NoteContent extends Component {
         <h2>{name}</h2>
         <p>{content}</p>
         <button>Back</button>
+        <button onClick={() => console.log("tester")}>Remove</button>
       </div>
     );
   }
