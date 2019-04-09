@@ -2,13 +2,14 @@
   border: 1px solid black;
   height: 80px;
   width: 350px;
+  margin-bottom: 8px;
 }
 
-p {
-  margin: 10px;
+.Remove-button {
+  margin-left: 10px;
 }
 
-/*.Remove-button {
-  position: relative;
-  left: 73%;
-}*/
+.link {
+  margin-left: 5px;
+  text-decoration: none;
+}

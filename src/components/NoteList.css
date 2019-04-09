@@ -1,3 +1,17 @@
 .Note-list-area {
   margin-left: 10px;
 }
+
+button.focus,
+button:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+.Add-note-button {
+  font-size: 15px;
+  margin-bottom: 15px;
+  border-radius: 50%;
+  border: 1px solid black;
+  height: 60px;
+}

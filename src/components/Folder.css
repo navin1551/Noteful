@@ -1,9 +1,6 @@
-.individual-folder {
+.Individual-folder {
   border: 1px solid black;
   height: 40px;
   width: 170px;
-}
-
-p {
-  margin: 10px;
+  margin-bottom: 8px;
 }

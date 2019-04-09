@@ -11,7 +11,9 @@ class Note extends React.Component {
   render() {
     return (
       <div className="Individual-note">
-        <Link to={`/note/${this.props.id}`}>{this.props.title}</Link>
+        <Link className="link" to={`/note/${this.props.id}`}>
+          {this.props.title}
+        </Link>
         <button className="Remove-button" onClick={this.handleClick}>
           Remove
         </button>

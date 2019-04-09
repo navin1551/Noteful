@@ -12,7 +12,7 @@ class FolderList extends React.Component {
         <h3>{folders}</h3>
         <button
           className="Add-folder-button"
-          onClick={() => console.log("+Folder tester")}
+          onClick={() => console.log("+add folder tester")}
         >
           + Folder
         </button>
