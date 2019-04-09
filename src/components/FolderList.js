@@ -9,7 +9,7 @@ class FolderList extends React.Component {
     ));
     return (
       <div className="Folder-list-area">
-        {folders}
+        <h3>{folders}</h3>
         <button
           className="Add-folder-button"
           onClick={() => console.log("+Folder tester")}

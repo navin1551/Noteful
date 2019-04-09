@@ -4,7 +4,6 @@ import FolderList from "./components/FolderList";
 import NoteList from "./components/NoteList";
 import NoteContent from "./components/NoteContent";
 import Store from "./Store";
-import RemoveNoteContext from "./RemoveNoteContext";
 import "./App.css";
 
 class App extends React.Component {
@@ -28,67 +27,70 @@ class App extends React.Component {
     });
   };
 
+  componentDidMount() {}
+
   render() {
-    const contextValue = {
-      removeNote: this.removeNoteHandle
-    };
     return (
-      <RemoveNoteContext.Provider value={contextValue}>
-        <div className="App">
-          <header>
-            <Link to={"/"}>Noteful</Link>
-          </header>
-          <Route
-            exact
-            path="/"
-            render={() => {
-              return (
-                <div className="Flex-container">
-                  <nav>
-                    <FolderList folders={this.state.folders} />
-                  </nav>
-                  <main>
-                    <NoteList
-                      removeNoteHandle={this.removeNoteHandle}
-                      notes={this.state.notes}
-                    />
-                  </main>
-                </div>
-              );
-            }}
-          />
-          <Route
-            path="/folder/:folderId"
-            render={({ match }) => {
-              let filterNotes = this.state.notes.filter(
-                note => note.folderId === match.params.folderId
-              );
-              return (
-                <div>
-                  <nav>
-                    <FolderList folders={this.state.folders} />
-                  </nav>
-                  <main>
-                    <NoteList
-                      notes={filterNotes}
-                      removeNoteHandle={this.removeNoteHandle}
-                    />
-                  </main>
-                </div>
-              );
-            }}
-          />
-          <Route
-            path="/note/:noteId"
-            render={({ match }) => {
-              let filteredNote = this.state.notes.filter(
-                note => note.id === match.params.noteId
-              );
-              return <NoteContent filteredNote={filteredNote} />;
-            }}
-          />
-        </div>
-      </RemoveNoteContext.Provider>
+      <div className="App">
+        <header>
+          <Link to={"/"}>Noteful</Link>
+        </header>
+        <Route
+          exact
+          path="/"
+          render={() => {
+            return (
+              <div className="Grid-container">
+                <nav>
+                  <FolderList folders={this.state.folders} />
+                </nav>
+                <main>
+                  <NoteList
+                    removeNoteHandle={this.removeNoteHandle}
+                    notes={this.state.notes}
+                  />
+                </main>
+              </div>
+            );
+          }}
+        />
+        <Route
+          path="/folder/:folderId"
+          render={({ match }) => {
+            let filterNotes = this.state.notes.filter(
+              note => note.folderId === match.params.folderId
+            );
+            return (
+              <div className="Grid-container">
+                <nav>
+                  <FolderList folders={this.state.folders} />
+                </nav>
+                <main>
+                  <NoteList
+                    notes={filterNotes}
+                    removeNoteHandle={this.removeNoteHandle}
+                  />
+                </main>
+              </div>
+            );
+          }}
+        />
+        <Route
+          path="/note/:noteId"
+          render={({ match }) => {
+            let filteredNote = this.state.notes.filter(
+              note => note.id === match.params.noteId
+            );
+            return (
+              <NoteContent
+                filteredNote={filteredNote}
+                notes={this.state.notes}
+                removeNoteHandle={this.removeNoteHandle}
+              />
+            );
+          }}
+        />
+      </div>
     );
   }
 }

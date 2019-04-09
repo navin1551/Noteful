@@ -14,7 +14,7 @@ class NoteList extends React.Component {
     ));
     return (
       <div className="Note-list-area">
-        {notes}
+        <h3>{notes}</h3>
         <button className="Add-note-button">+ Note</button>
       </div>
     );

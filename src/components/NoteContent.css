@@ -1,0 +1,25 @@
+.Note-content-area {
+  display: flex;
+  flex-direction: row;
+  margin-left: 40%;
+  margin-top: 40px;
+}
+
+.Note-info-area {
+  height: 500px;
+  width: 400px;
+  margin-left: 20px;
+}
+
+span {
+  border: 1px solid black;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-size: 50px;
+}
+
+h2 {
+  border: 2px solid black;
+  height: 60px;
+  padding-left: 5px;
+}
