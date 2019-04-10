@@ -3,7 +3,8 @@ import "./NoteContent.css";
 
 class NoteContent extends Component {
   handleClick = event => {
-    const id = this.props.id;
+    console.log("tester");
+    const { id } = this.props.filteredNote[0];
     this.props.removeNoteHandle(id);
   };
 
@@ -18,9 +19,7 @@ class NoteContent extends Component {
           <h2>{name}</h2>
           <p>{content}</p>
           <button>Back</button>
-          <button onClick={() => console.log("remove button tester")}>
-            Remove
-          </button>
+          <button onClick={() => console.log("test")}>Remove</button>
         </div>
       </div>
     );

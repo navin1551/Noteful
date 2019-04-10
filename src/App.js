@@ -12,6 +12,32 @@ class App extends React.Component {
     notes: Store.notes
   };
 
+  componentDidMount() {
+    Promise.all([
+      fetch("http://localhost:9090/folders"),
+      fetch("http://localhost/9090/notes")
+    ])
+
+      .then(([folderRes, noteRes]) => {
+        if (!folderRes.ok) return folderRes.json().then(e => Promise.reject(e));
+        if (!noteRes.ok) return noteRes.json().then(e => Promise.reject(e));
+
+        return Promise.all([folderRes.json(), noteRes.json()]);
+      })
+      .then(([folders, notes]) => {
+        this.setState({
+          folders
+        });
+        this.setState({
+          notes
+        });
+      })
+
+      .catch(error => {
+        console.error({ error });
+      });
+  }
+
   addFolderHandle = () => {
     console.log("add folder test");
   };
@@ -26,8 +52,6 @@ class App extends React.Component {
       notes: updatedNotes
     });
   };
-
-  componentDidMount() {}
 
   render() {
     return (
