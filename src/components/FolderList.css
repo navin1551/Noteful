@@ -10,3 +10,7 @@ button:focus {
   outline: 0;
   box-shadow: none;
 }
+
+.Folder-list-item {
+  list-style: none;
+}

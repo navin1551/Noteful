@@ -6,7 +6,7 @@ import NotefulContext from "../NotefulContext";
 class NoteList extends React.Component {
   static contextType = NotefulContext;
   render() {
-    let notes = this.context.notes.map((note, id) => (
+    let notes = this.props.notes.map(note => (
       <Note
         key={note.id}
         title={note.name}
@@ -16,13 +16,15 @@ class NoteList extends React.Component {
     ));
     return (
       <div className="Note-list-area">
-        <h3>{notes}</h3>
-        <button
-          className="Add-note-button"
-          onClick={() => console.log("add note tester")}
-        >
-          + Note
-        </button>
+        <ul className="Note-list">
+          {notes}
+          <button
+            className="Add-note-button"
+            onClick={() => console.log(this.context.notes)}
+          >
+            + Note
+          </button>
+        </ul>
       </div>
     );
   }

@@ -6,18 +6,22 @@ import NotefulContext from "../NotefulContext";
 class FolderList extends React.Component {
   static contextType = NotefulContext;
   render() {
-    let folders = this.context.folders.map((folder, id) => (
-      <Folder key={folder.id} title={folder.name} id={folder.id} />
-    ));
+    const { folders } = this.context;
     return (
       <div className="Folder-list-area">
-        <h3>{folders}</h3>
-        <button
-          className="Add-folder-button"
-          onClick={() => console.log("tester")}
-        >
-          + Folder
-        </button>
+        <ul className="Folder-list">
+          {folders.map(folder => (
+            <li key={folder.id} className="Folder-list-item">
+              <Folder id={folder.id} title={folder.name} />
+            </li>
+          ))}
+          <button
+            className="Add-folder-button"
+            onClick={() => console.log(this.context.folders)}
+          >
+            + Folder
+          </button>
+        </ul>
       </div>
     );
   }

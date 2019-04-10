@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import "./NoteContent.css";
+import NotefulContext from "../NotefulContext";
 
 class NoteContent extends Component {
+  static contextType = NotefulContext;
   handleClick = event => {
     console.log("tester");
     const { id } = this.props.filteredNote[0];
