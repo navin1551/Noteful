@@ -1,10 +1,12 @@
 import React from "react";
 import Note from "./Note";
 import "./NoteList.css";
+import NotefulContext from "../NotefulContext";
 
 class NoteList extends React.Component {
+  static contextType = NotefulContext;
   render() {
-    let notes = this.props.notes.map((note, id) => (
+    let notes = this.context.notes.map((note, id) => (
       <Note
         key={note.id}
         title={note.name}

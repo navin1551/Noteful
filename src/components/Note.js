@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Note.css";
+import NotefulContext from "../NotefulContext";
 
 class Note extends React.Component {
+  static contextType = NotefulContext;
   handleClick = event => {
     const id = this.props.id;
     this.props.removeNoteHandle(id);
