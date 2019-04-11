@@ -7,7 +7,6 @@ class Folder extends React.Component {
     return (
       <div className="Individual-folder">
         <Link className="link" to={`/folder/${this.props.id}`}>
-          {" "}
           {this.props.title}
         </Link>
       </div>

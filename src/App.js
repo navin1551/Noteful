@@ -40,25 +40,7 @@ class App extends React.Component {
           <header>
             <Link to={"/"}>Noteful</Link>
           </header>
-          <Route
-            exact
-            path="/"
-            render={() => {
-              return (
-                <div className="Grid-container">
-                  <nav>
-                    <FolderList folders={this.state.folders} />
-                  </nav>
-                  <main>
-                    <NoteList
-                      removeNoteHandle={this.removeNoteHandle}
-                      notes={this.state.notes}
-                    />
-                  </main>
-                </div>
-              );
-            }}
-          />
+          <Route exact path="/" component={FolderList} />
           <Route
             path="/folder/:folderId"
             render={({ match }) => {
