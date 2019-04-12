@@ -1,29 +1,29 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./NoteContent.css";
 import NotefulContext from "../NotefulContext";
 
 class NoteContent extends Component {
   static contextType = NotefulContext;
   handleClick = event => {
-    console.log("tester");
-    const { id } = this.props.filteredNote[0];
+    const id = this.props.id;
     this.props.removeNoteHandle(id);
   };
-
   render() {
-    const { name, content } = this.props.filteredNote[0];
+    const { title, id } = this.props;
     return (
-      <div className="Note-content-area">
-        <div className="Important-container">
-          <span>IMPORTANT</span>
-        </div>
-        <div className="Note-info-area">
-          <h2>{name}</h2>
-          <p>{content}</p>
-          <button>Back</button>
-          <button onClick={() => console.log("test")}>Remove</button>
-        </div>
-      </div>
+      <li className="Note-content">
+        <h2 className="Note-name">
+          <Link to={`/note/${id}`}>{title}</Link>
+        </h2>
+        <button
+          className="Remove-button"
+          type="button"
+          onClick={this.handleClick}
+        >
+          Remove
+        </button>
+      </li>
     );
   }
 }
