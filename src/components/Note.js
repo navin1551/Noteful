@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./Note.css";
 import NotefulContext from "../NotefulContext";
 import NoteContent from "./NoteContent";
@@ -13,11 +12,17 @@ class Note extends React.Component {
 
   render() {
     const { content, name } = this.props.filteredNote[0];
-    console.log(content);
     return (
-      <div className="Individual-note">
-        <NoteContent id={this.props.id} notes={this.props.notes} title={name} />
-        {content}
+      <div className="Individual-note-area">
+        <span>IMPORTANT</span>
+        <div className="Individual-note">
+          <NoteContent
+            id={this.props.id}
+            notes={this.props.notes}
+            title={name}
+          />
+          <p>{content}</p>
+        </div>
       </div>
     );
   }
