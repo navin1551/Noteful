@@ -11,15 +11,15 @@ class Note extends React.Component {
   };
 
   render() {
-    const { content, name } = this.props.filteredNote[0];
+    const { content, name, id } = this.props.note;
     return (
       <div className="Individual-note-area">
-        <span>IMPORTANT</span>
+        <span>{name}</span>
         <div className="Individual-note">
           <NoteContent
-            id={this.props.id}
-            notes={this.props.notes}
+            id={id}
             title={name}
+            removeNoteHandle={this.props.removeNoteHandle}
           />
           <p>{content}</p>
         </div>
