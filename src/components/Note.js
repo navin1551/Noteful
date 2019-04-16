@@ -5,9 +5,9 @@ import NoteContent from "./NoteContent";
 
 class Note extends React.Component {
   static contextType = NotefulContext;
-  handleClick = event => {
-    const id = this.props.id;
-    this.props.removeNoteHandle(id);
+
+  deleteRedirect = noteId => {
+    this.props.history.push("/");
   };
 
   render() {
@@ -22,7 +22,7 @@ class Note extends React.Component {
           <NoteContent
             id={id}
             title={name}
-            removeNoteHandle={this.props.removeNoteHandle}
+            onDeleteNote={this.deleteRedirect}
           />
           <p>{content}</p>
         </div>

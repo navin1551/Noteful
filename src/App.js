@@ -3,14 +3,38 @@ import { Route, Link } from "react-router-dom";
 import Note from "./components/Note";
 import Noteful from "./components/Noteful";
 import NotefulContext from "./NotefulContext";
-import Store from "./Store";
 import "./App.css";
 
 class App extends React.Component {
   state = {
-    folders: Store.folders,
-    notes: Store.notes
+    folders: [],
+    notes: []
   };
+
+  componentDidMount() {
+    Promise.all([
+      fetch("http://localhost:9090/folders"),
+      fetch("http://localhost:9090/notes")
+    ])
+      .then(([folderRes, noteRes]) => {
+        if (!folderRes.ok) return folderRes.json().then(e => Promise.reject(e));
+        if (!noteRes.ok) return noteRes.json().then(e => Promise.reject(e));
+
+        return Promise.all([folderRes.json(), noteRes.json()]);
+      })
+      .then(([folders, notes]) => {
+        this.setState({
+          folders
+        });
+        this.setState({
+          notes
+        });
+      })
+
+      .catch(error => {
+        console.error({ error });
+      });
+  }
 
   addFolderHandle = () => {
     console.log("add folder test");
@@ -31,7 +55,7 @@ class App extends React.Component {
     const contextValue = {
       folders: this.state.folders,
       notes: this.state.notes,
-      removeNoteHandle: this.removeNoteHandle
+      removeNote: this.removeNoteHandle
     };
     return (
       <NotefulContext.Provider value={contextValue}>
