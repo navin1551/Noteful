@@ -1,7 +1,5 @@
 import React from "react";
 import { Route, Link } from "react-router-dom";
-import FolderList from "./components/FolderList";
-import NoteList from "./components/NoteList";
 import Note from "./components/Note";
 import Noteful from "./components/Noteful";
 import NotefulContext from "./NotefulContext";
@@ -33,7 +31,7 @@ class App extends React.Component {
     const contextValue = {
       folders: this.state.folders,
       notes: this.state.notes,
-      deleteNote: this.removeNoteHandle
+      removeNoteHandle: this.removeNoteHandle
     };
     return (
       <NotefulContext.Provider value={contextValue}>
@@ -44,43 +42,11 @@ class App extends React.Component {
               <Link to={"/"}>Noteful</Link>
             </h2>
           </header>
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <Noteful
-                notes={this.state.notes}
-                folders={this.state.folders}
-                removeNoteHandle={this.removeNoteHandle}
-              />
-            )}
-          />
-          <Route
-            path="/folder/:folderId"
-            render={({ match }) => (
-              <Noteful
-                notes={this.state.notes.filter(
-                  note => note.folderId === match.params.folderId
-                )}
-                folders={this.state.folders}
-                removeNoteHandle={this.removeNoteHandle}
-              />
-            )}
-          />
-          <Route
-            path="/note/:noteId"
-            render={({ match }) => (
-              <Note
-                note={
-                  this.state.notes.filter(
-                    note => note.id === match.params.noteId
-                  )[0]
-                }
-                removeNoteHandle={this.removeNoteHandle}
-                folder={this.state.folders}
-              />
-            )}
-          />
+          <main>
+            <Route exact path="/" component={Noteful} />
+            <Route path="/folder/:folderId" component={Noteful} />
+            <Route path="/note/:noteId" component={Note} />
+          </main>
         </div>
       </NotefulContext.Provider>
     );

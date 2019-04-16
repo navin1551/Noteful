@@ -6,7 +6,7 @@ import NotefulContext from "../NotefulContext";
 class FolderList extends React.Component {
   static contextType = NotefulContext;
   render() {
-    const { folders } = this.props;
+    const { folders } = this.context;
     return (
       <div className="Folder-list-area">
         <ul className="Folder-list">

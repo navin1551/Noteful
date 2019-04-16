@@ -7,14 +7,10 @@ class Noteful extends React.Component {
     return (
       <div className="Grid-container">
         <nav>
-          <FolderList folders={this.props.folders} />
+          <FolderList {...this.props} />
         </nav>
         <main>
-          <NoteList
-            removeNoteHandle={this.props.removeNoteHandle}
-            notes={this.props.notes}
-            folders={this.props.folder}
-          />
+          <NoteList {...this.props} />
         </main>
       </div>
     );

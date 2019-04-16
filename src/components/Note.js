@@ -11,7 +11,10 @@ class Note extends React.Component {
   };
 
   render() {
-    const { content, name, id } = this.props.note;
+    const note = this.context.notes.filter(
+      note => note.id === this.props.match.params.noteId
+    )[0];
+    const { content, name, id } = note;
     return (
       <div className="Individual-note-area">
         <span>{name}</span>
