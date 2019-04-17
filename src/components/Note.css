@@ -22,3 +22,14 @@ span {
 .Individual-note-area {
   margin-top: 35px;
 }
+
+.Back-button {
+  position: absolute;
+  left: 35%;
+  top: 10%;
+  font-size: 15px;
+  border: 1px solid black;
+  height: 50px;
+  width: 50px;
+  text-decoration: none;
+}

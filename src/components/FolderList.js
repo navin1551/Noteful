@@ -11,13 +11,18 @@ class FolderList extends React.Component {
       <div className="Folder-list-area">
         <ul className="Folder-list">
           {folders.map(folder => (
-            <li key={folder.id} className="Folder-list-item">
+            <li
+              id={folder.id}
+              key={folder.id}
+              className="Folder-list-item"
+              onClick={() => console.log("test")}
+            >
               <Folder id={folder.id} title={folder.name} />
             </li>
           ))}
           <button
             className="Add-folder-button"
-            onClick={() => console.log(this.context.folders)}
+            onClick={() => console.log("Add folder tester")}
           >
             + Folder
           </button>

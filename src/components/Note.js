@@ -2,32 +2,35 @@ import React from "react";
 import "./Note.css";
 import NotefulContext from "../NotefulContext";
 import NoteContent from "./NoteContent";
+import { Link, Redirect } from "react-router-dom";
 
 class Note extends React.Component {
   static contextType = NotefulContext;
-
-  deleteRedirect = noteId => {
-    this.props.history.push("/");
-  };
 
   render() {
     const note = this.context.notes.filter(
       note => note.id === this.props.match.params.noteId
     )[0];
-    const { content, name, id } = note;
-    return (
-      <div className="Individual-note-area">
-        <span>{name}</span>
-        <div className="Individual-note">
-          <NoteContent
-            id={id}
-            title={name}
-            onDeleteNote={this.deleteRedirect}
-          />
-          <p>{content}</p>
+    if (note) {
+      const { content, name, id, folderId } = note;
+      const folder = this.context.folders.filter(
+        folder => folder.id === folderId
+      )[0];
+      return (
+        <div className="Individual-note-area">
+          <Link to="/" className="Back-button">
+            Back
+          </Link>
+          <span>{folder.name}</span>
+          <div className="Individual-note">
+            <NoteContent id={id} title={name} />
+            <p>{content}</p>
+          </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return <Redirect to="/" />;
+    }
   }
 }
 

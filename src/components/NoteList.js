@@ -19,12 +19,12 @@ class NoteList extends React.Component {
       <div className="Note-list-area">
         <ul className="Note-list">
           {listNotes}
-          {/*<button
+          <button
             className="Add-note-button"
-            onClick={() => console.log(this.context.notes)}
+            onClick={() => console.log("Add note tester")}
           >
             + Note
-          </button>*/}
+          </button>
         </ul>
       </div>
     );
