@@ -37,7 +37,9 @@ class NoteContent extends Component {
     return (
       <li className="Note-content">
         <h2 className="Note-name">
-          <Link to={`/note/${id}`}>{title}</Link>
+          <Link to={`/note/${id}`} className="link">
+            {title}
+          </Link>
         </h2>
         <button
           className="Remove-button"

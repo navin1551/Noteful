@@ -5,6 +5,11 @@
   margin-bottom: 8px;
 }
 
+.link {
+  text-decoration: none;
+  padding: 10px;
+}
+
 .active {
   background-color: yellow;
 }

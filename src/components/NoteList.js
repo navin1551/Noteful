@@ -1,5 +1,6 @@
 import React from "react";
 import NoteContent from "./NoteContent";
+import { Link } from "react-router-dom";
 import "./NoteList.css";
 import NotefulContext from "../NotefulContext";
 
@@ -19,12 +20,13 @@ class NoteList extends React.Component {
       <div className="Note-list-area">
         <ul className="Note-list">
           {listNotes}
-          <button
+          <Link
+            to="/add-note"
             className="Add-note-button"
             onClick={() => console.log("Add note tester")}
           >
             + Note
-          </button>
+          </Link>
         </ul>
       </div>
     );

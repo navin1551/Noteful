@@ -13,3 +13,8 @@
   font-size: 10px;
   list-style: none;
 }
+
+.Remove-button {
+  position: relative;
+  left: 70%;
+}

@@ -1,9 +1,12 @@
 import React from "react";
-import { Route, Link } from "react-router-dom";
+import { Route, Link, Switch } from "react-router-dom";
 import Note from "./components/Note";
 import Noteful from "./components/Noteful";
 import NotefulContext from "./NotefulContext";
 import "./App.css";
+import AddFolder from "./components/AddFolder";
+import AddNote from "./components/AddNote";
+import ErrorBoundary from "./ErrorBoundary";
 
 class App extends React.Component {
   state = {
@@ -36,12 +39,16 @@ class App extends React.Component {
       });
   }
 
-  addFolderHandle = () => {
-    console.log("add folder test");
+  addFolderHandle = folder => {
+    this.setState({
+      folders: [...this.state.folders, folder]
+    });
   };
 
-  addNoteHandle = () => {
-    console.log("add note test");
+  addNoteHandle = note => {
+    this.setState({
+      notes: [...this.state.notes, note]
+    });
   };
 
   removeNoteHandle = id => {
@@ -55,7 +62,9 @@ class App extends React.Component {
     const contextValue = {
       folders: this.state.folders,
       notes: this.state.notes,
-      removeNote: this.removeNoteHandle
+      removeNote: this.removeNoteHandle,
+      addFolder: this.addFolderHandle,
+      addNote: this.addNoteHandle
     };
     return (
       <NotefulContext.Provider value={contextValue}>
@@ -67,9 +76,15 @@ class App extends React.Component {
             </h2>
           </header>
           <main>
-            <Route exact path="/" component={Noteful} />
-            <Route path="/folder/:folderId" component={Noteful} />
-            <Route path="/note/:noteId" component={Note} />
+            <Switch>
+              <ErrorBoundary>
+                <Route exact path="/" component={Noteful} />
+                <Route path="/folder/:folderId" component={Noteful} />
+                <Route path="/note/:noteId" component={Note} />
+                <Route path="/add-folder" exact component={AddFolder} />
+                <Route path="/add-note" exact component={AddNote} />
+              </ErrorBoundary>
+            </Switch>
           </main>
         </div>
       </NotefulContext.Provider>
