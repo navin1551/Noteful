@@ -10,6 +10,7 @@ export default class AddNote extends React.Component {
       content: "",
       folderId: "",
       id: "",
+      modified: new Date(),
       name: "",
       nameValid: false,
       contentValid: false,
@@ -135,7 +136,7 @@ export default class AddNote extends React.Component {
   render() {
     return (
       <section className="add-note">
-        <h2>Create a note</h2>
+        <h2>Create new note</h2>
         <form onSubmit={e => this.handleNoteSubmit(e)}>
           <div className="field">
             <label htmlFor="note-folder-input">Choose Folder:</label>
@@ -155,7 +156,7 @@ export default class AddNote extends React.Component {
             </select>
           </div>
           <div className="field">
-            <label htmlFor="note-name-input">Name</label>
+            <label htmlFor="note-name-input">Name:</label>
             <input
               type="text"
               id="note-name-input"
@@ -168,7 +169,7 @@ export default class AddNote extends React.Component {
             message={this.state.validationMessages.name}
           />
           <div className="field">
-            <label htmlFor="note-content-input">Content</label>
+            <label htmlFor="note-content-input">Content:</label>
             <textarea
               id="note-content-input"
               value={this.state.content}

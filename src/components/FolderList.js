@@ -16,11 +16,7 @@ class FolderList extends React.Component {
               <Folder id={folder.id} title={folder.name} />
             </li>
           ))}
-          <Link
-            to="/add-folder"
-            className="Add-folder-button"
-            onClick={() => console.log("Add folder tester")}
-          >
+          <Link to="/add-folder" className="Add-folder-button">
             + Folder
           </Link>
         </ul>

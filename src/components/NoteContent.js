@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { format } from "date-fns";
 import "./NoteContent.css";
 import NotefulContext from "../NotefulContext";
+import PropTypes from "prop-types";
 
 class NoteContent extends Component {
   static defaultProps = {
@@ -33,7 +35,7 @@ class NoteContent extends Component {
   };
 
   render() {
-    const { title, id } = this.props;
+    const { title, id, modified } = this.props;
     return (
       <li className="Note-content">
         <h2 className="Note-name">
@@ -41,16 +43,28 @@ class NoteContent extends Component {
             {title}
           </Link>
         </h2>
-        <button
-          className="Remove-button"
-          type="button"
-          onClick={this.handleClickDelete}
-        >
-          Remove
-        </button>
+        <div className="Modified-date-area">
+          <p>Modified:</p>
+          <span className="Modified-date">
+            {format(modified, "MM/DD/YYYY")}
+            <button
+              className="Remove-button"
+              type="button"
+              onClick={this.handleClickDelete}
+            >
+              Remove
+            </button>
+          </span>
+        </div>
       </li>
     );
   }
 }
+
+NoteContent.propTypes = {
+  id: PropTypes.string,
+  title: PropTypes.string,
+  onDeleteNote: PropTypes.func
+};
 
 export default NoteContent;

@@ -17,4 +17,14 @@
 .Remove-button {
   position: relative;
   left: 70%;
+  top: 10%;
+}
+
+.Modified-date-area {
+  display: flex;
+  padding-left: 5px;
+}
+
+.Modified-date {
+  margin-left: 5px;
 }

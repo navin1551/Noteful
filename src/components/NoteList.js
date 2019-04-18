@@ -10,11 +10,23 @@ class NoteList extends React.Component {
     let listNotes = this.props.match.params.hasOwnProperty("folderId")
       ? this.context.notes.map(note => {
           if (note.folderId === this.props.match.params.folderId) {
-            return <NoteContent key={note.id} title={note.name} id={note.id} />;
+            return (
+              <NoteContent
+                key={note.id}
+                title={note.name}
+                id={note.id}
+                modified={note.modified}
+              />
+            );
           }
         })
       : this.context.notes.map(note => (
-          <NoteContent key={note.id} title={note.name} id={note.id} />
+          <NoteContent
+            key={note.id}
+            title={note.name}
+            id={note.id}
+            modified={note.modified}
+          />
         ));
     return (
       <div className="Note-list-area">
