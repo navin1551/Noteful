@@ -6,10 +6,13 @@ button:focus {
 
 .Add-note-button {
   font-size: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
   border-radius: 50%;
   text-decoration: none;
   border: 1px solid black;
   height: 60px;
   padding: 5px;
+  margin-top: 10px;
+  position: relative;
+  left: 150px;
 }

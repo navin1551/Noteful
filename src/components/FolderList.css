@@ -5,6 +5,8 @@
   border-radius: 50%;
   padding: 5px;
   text-decoration: none;
+  position: relative;
+  left: 75px;
 }
 
 button.focus,

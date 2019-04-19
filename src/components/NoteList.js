@@ -19,6 +19,7 @@ class NoteList extends React.Component {
               />
             );
           }
+          return null;
         })
       : this.context.notes.map(note => (
           <NoteContent
@@ -30,16 +31,12 @@ class NoteList extends React.Component {
         ));
     return (
       <div className="Note-list-area">
-        <ul className="Note-list">
-          {listNotes}
-          <Link
-            to="/add-note"
-            className="Add-note-button"
-            onClick={() => console.log("Add note tester")}
-          >
+        <ul className="Note-list">{listNotes}</ul>
+        <div>
+          <Link to="/add-note" className="Add-note-button">
             + Note
           </Link>
-        </ul>
+        </div>
       </div>
     );
   }

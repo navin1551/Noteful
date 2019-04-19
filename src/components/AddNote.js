@@ -12,6 +12,7 @@ export default class AddNote extends React.Component {
       id: "",
       modified: new Date(),
       name: "",
+      formValid: false,
       nameValid: false,
       contentValid: false,
       validationMessages: {
@@ -137,7 +138,7 @@ export default class AddNote extends React.Component {
     return (
       <section className="add-note">
         <h2>Create new note</h2>
-        <form onSubmit={e => this.handleNoteSubmit(e)}>
+        <form onSubmit={e => this.noteSubmitHandle(e)}>
           <div className="field">
             <label htmlFor="note-folder-input">Choose Folder:</label>
             <select
