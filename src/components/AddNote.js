@@ -25,15 +25,25 @@ export default class AddNote extends React.Component {
   static contextType = NotefulContext;
 
   addNoteContent(content) {
-    this.setState({ content });
+    this.setState({ content }, () => {
+      this.validateContent(content);
+    });
   }
 
   addNoteName(name) {
-    this.setState({ name });
+    this.setState({ name }, () => {
+      this.validateName(name);
+    });
   }
 
   addFolderId(folderId) {
     this.setState({ folderId });
+  }
+
+  addModified(modified) {
+    this.setState({
+      modified
+    });
   }
 
   noteSubmitHandle = e => {
