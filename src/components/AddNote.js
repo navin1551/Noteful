@@ -172,6 +172,8 @@ export default class AddNote extends React.Component {
               type="text"
               id="note-name-input"
               value={this.state.name}
+              aria-label="Input for note name"
+              aria-required="true"
               onChange={e => this.addNoteName(e.target.value)}
             />
           </div>
@@ -184,6 +186,8 @@ export default class AddNote extends React.Component {
             <textarea
               id="note-content-input"
               value={this.state.content}
+              aria-label="Text area for note content"
+              aria-required="true"
               onChange={e => this.addNoteContent(e.target.value)}
             />
           </div>

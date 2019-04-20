@@ -99,6 +99,8 @@ export default class AddFolder extends React.Component {
             type="text"
             id="add-folder-input"
             value={this.state.name}
+            aria-label="Input for folder name"
+            aria-required="true"
             onChange={e => this.addFolderName(e.target.value)}
           />
           <ValidationError
