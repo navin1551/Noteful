@@ -15,9 +15,10 @@ class Folder extends React.Component {
   }
 }
 
+/*
 Folder.propTypes = {
   id: PropTypes.string,
   title: PropTypes.string
 };
-
+*/
 export default Folder;

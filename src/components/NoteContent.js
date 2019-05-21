@@ -39,7 +39,7 @@ class NoteContent extends Component {
     return (
       <li className="Note-content">
         <h2 className="Note-name">
-          <Link to={`/notes/${id}`} className="link">
+          <Link to={`/note/${id}`} className="link">
             {title}
           </Link>
         </h2>
@@ -60,11 +60,11 @@ class NoteContent extends Component {
     );
   }
 }
-
+/*
 NoteContent.propTypes = {
   id: PropTypes.string,
   title: PropTypes.string,
   onDeleteNote: PropTypes.func
 };
-
+*/
 export default NoteContent;

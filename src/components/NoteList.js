@@ -7,9 +7,10 @@ import NotefulContext from "../NotefulContext";
 class NoteList extends React.Component {
   static contextType = NotefulContext;
   render() {
+    let folderId = parseInt(this.props.match.params.folderId);
     let listNotes = this.props.match.params.hasOwnProperty("folderId")
       ? this.context.notes.map(note => {
-          if (note.folder === this.props.match.params.folderId) {
+          if (note.folder === folderId) {
             return (
               <NoteContent
                 key={note.id}

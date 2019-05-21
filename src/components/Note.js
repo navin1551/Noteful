@@ -8,20 +8,20 @@ class Note extends React.Component {
   static contextType = NotefulContext;
 
   render() {
-    const note = this.context.notes.filter(
-      note => note.folder === this.props.match.params.folderId
-    )[0];
+    const noteId = parseInt(this.props.match.params.noteId);
+    const note = this.context.notes.filter(note => note.id === noteId)[0];
+
     if (note) {
-      const { content, name, id, folderid } = note;
+      const { content, name, id, folderId } = note;
       const folder = this.context.folders.filter(
-        folder => folder.id === folderid
+        folder => folder.id === folderId
       )[0];
       return (
         <div className="Individual-note-area">
           <Link to="/" className="Back-button">
             Back
           </Link>
-          <span className="Note-folder-name">{folder.name}</span>
+          <span className="Note-folder-name">{name}</span>
           <div className="Individual-note">
             <NoteContent id={id} title={name} />
             <p>{content}</p>
