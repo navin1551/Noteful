@@ -9,12 +9,12 @@ class Note extends React.Component {
 
   render() {
     const note = this.context.notes.filter(
-      note => note.id === this.props.match.params.noteId
+      note => note.folder === this.props.match.params.folderId
     )[0];
     if (note) {
-      const { content, name, id, folderId } = note;
+      const { content, name, id, folderid } = note;
       const folder = this.context.folders.filter(
-        folder => folder.id === folderId
+        folder => folder.id === folderid
       )[0];
       return (
         <div className="Individual-note-area">

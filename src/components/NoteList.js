@@ -9,7 +9,7 @@ class NoteList extends React.Component {
   render() {
     let listNotes = this.props.match.params.hasOwnProperty("folderId")
       ? this.context.notes.map(note => {
-          if (note.folderId === this.props.match.params.folderId) {
+          if (note.folder === this.props.match.params.folderId) {
             return (
               <NoteContent
                 key={note.id}

@@ -15,7 +15,7 @@ class NoteContent extends Component {
     e.preventDefault();
     const noteId = this.props.id;
 
-    fetch(`http://localhost:9090/notes/${noteId}`, {
+    fetch(`http://localhost:8000/api/notes/${noteId}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json"
@@ -39,7 +39,7 @@ class NoteContent extends Component {
     return (
       <li className="Note-content">
         <h2 className="Note-name">
-          <Link to={`/note/${id}`} className="link">
+          <Link to={`/notes/${id}`} className="link">
             {title}
           </Link>
         </h2>
