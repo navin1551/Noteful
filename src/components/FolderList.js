@@ -8,6 +8,7 @@ class FolderList extends React.Component {
   static contextType = NotefulContext;
   render() {
     const { folders } = this.context;
+    console.log(folders);
 
     return (
       <div className="Folder-list-area">

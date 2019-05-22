@@ -7,7 +7,6 @@ export default class AddFolder extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: "",
       name: "",
       nameValid: false,
       formValid: false,
@@ -27,7 +26,8 @@ export default class AddFolder extends React.Component {
 
   folderSubmitHandle = e => {
     e.preventDefault();
-    const folder = (({ id, name }) => ({ id, name }))(this.state);
+    const { id, name } = this.state;
+    const folder = { id, name };
     console.log(folder);
     fetch(`http://localhost:8000/api/folders`, {
       method: "POST",
@@ -44,7 +44,6 @@ export default class AddFolder extends React.Component {
       })
       .then(() => {
         this.setState({
-          id: "",
           name: ""
         });
         this.context.addFolder(folder);
