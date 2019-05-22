@@ -7,6 +7,7 @@ import "./App.css";
 import AddFolder from "./components/AddFolder";
 import AddNote from "./components/AddNote";
 import ErrorBoundary from "./ErrorBoundary";
+import EditNote from "./components/EditNote";
 
 class App extends React.Component {
   state = {
@@ -58,13 +59,23 @@ class App extends React.Component {
     });
   };
 
+  updateNote = updatedNote => {
+    const newNotes = this.state.notes.map(n =>
+      n.id === updatedNote.id ? updatedNote : n
+    );
+    this.setState({
+      notes: newNotes
+    });
+  };
+
   render() {
     const contextValue = {
       folders: this.state.folders,
       notes: this.state.notes,
       removeNote: this.removeNoteHandle,
       addFolder: this.addFolderHandle,
-      addNote: this.addNoteHandle
+      addNote: this.addNoteHandle,
+      updateNote: this.updateNote
     };
     return (
       <NotefulContext.Provider value={contextValue}>
@@ -83,6 +94,7 @@ class App extends React.Component {
                 <Route path="/note/:noteId" component={Note} />
                 <Route path="/add-folder" exact component={AddFolder} />
                 <Route path="/add-note" exact component={AddNote} />
+                <Route path="/edit-note/:noteId" component={EditNote} />
               </ErrorBoundary>
             </Switch>
           </main>

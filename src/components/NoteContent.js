@@ -54,6 +54,11 @@ class NoteContent extends Component {
             >
               Remove
             </button>
+            <button>
+              <Link className="Edit-button" to={`/edit-note/${id}`}>
+                Edit Note
+              </Link>
+            </button>
           </span>
         </div>
       </li>

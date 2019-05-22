@@ -55,7 +55,7 @@ export default class AddNote extends React.Component {
       modified,
       name
     }))(this.state);
-
+    console.log(note);
     fetch(`http://localhost:8000/api/notes`, {
       method: "POST",
       body: JSON.stringify(note),
