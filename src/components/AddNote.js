@@ -48,15 +48,15 @@ export default class AddNote extends React.Component {
 
   noteSubmitHandle = e => {
     e.preventDefault();
-    const note = (({ content, folderId, id, modified, name }) => ({
+    const note = (({ content, folderid, id, modified, name }) => ({
       content,
-      folderId,
+      folderid,
       id,
       modified,
       name
     }))(this.state);
 
-    fetch(`http://localhost:9090/notes`, {
+    fetch(`http://localhost:8000/api/notes`, {
       method: "POST",
       body: JSON.stringify(note),
       headers: {
