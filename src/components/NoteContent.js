@@ -23,7 +23,7 @@ class NoteContent extends Component {
     })
       .then(res => {
         if (!res.ok) return res.json().then(error => Promise.reject(error));
-        return res.json();
+        return null; //res.json();
       })
       .then(() => {
         this.context.removeNote(noteId);
