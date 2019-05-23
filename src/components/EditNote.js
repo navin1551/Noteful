@@ -25,7 +25,7 @@ export default class EditNote extends React.Component {
 
   componentDidMount() {
     const { noteId } = this.props.match.params;
-    fetch(`http://localhost:8000/api/notes/${noteId}`, {
+    fetch(`https://shielded-bayou-42227.herokuapp.com/api/notes/${noteId}`, {
       method: "Get",
       headers: {
         "content-type": "application/json"
@@ -60,7 +60,7 @@ export default class EditNote extends React.Component {
     const { noteId } = this.props.match.params;
     const { id, name, content } = this.state;
     const newNote = { id, name, content };
-    fetch(`http://localhost:8000/api/notes/${noteId}`, {
+    fetch(`https://shielded-bayou-42227.herokuapp.com/api/notes/${noteId}`, {
       method: "PATCH",
       body: JSON.stringify(newNote),
       headers: {
