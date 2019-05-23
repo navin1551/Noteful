@@ -20,9 +20,11 @@ class Note extends React.Component {
 
       return (
         <div className="Individual-note-area">
-          <Link to="/" className="Back-button">
-            Back
-          </Link>
+          <button>
+            <Link to="/" className="Back-link">
+              Back
+            </Link>
+          </button>
           <span className="Note-folder-name">{name}</span>
           <div className="Individual-note">
             <NoteContent id={id} title={name} />

@@ -22,7 +22,7 @@ class NoteContent extends Component {
       }
     })
       .then(res => {
-        if (!res.ok) return res.json().then(e => Promise.reject(e));
+        if (!res.ok) return res.json().then(error => Promise.reject(error));
         return res.json();
       })
       .then(() => {
@@ -54,9 +54,9 @@ class NoteContent extends Component {
             >
               Remove
             </button>
-            <button>
-              <Link className="Edit-button" to={`/edit-note/${id}`}>
-                Edit Note
+            <button className="Edit-button">
+              <Link className="Edit-link" to={`/edit-note/${id}`}>
+                Edit
               </Link>
             </button>
           </span>

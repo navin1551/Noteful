@@ -16,7 +16,7 @@
 
 .Remove-button {
   position: relative;
-  left: 70%;
+  left: 65%;
   top: 10%;
 }
 
@@ -29,6 +29,14 @@
   margin-left: 5px;
 }
 
-.Edit-button {
+.Edit-link {
   text-decoration: none;
+  position: relative;
+}
+
+.Edit-button {
+  position: relative;
+  top: 10%;
+  right: 5px;
+  width: 60px;
 }

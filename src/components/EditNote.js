@@ -106,7 +106,9 @@ export default class EditNote extends React.Component {
             onChange={this.handleContentChange}
           />
           <button>Edit</button>
-          <button onClick={this.handleClickCancel}>Cancel</button>
+          <button type="button" onClick={this.handleClickCancel}>
+            Cancel
+          </button>
         </form>
       </section>
     );
