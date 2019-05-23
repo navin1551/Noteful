@@ -65,11 +65,11 @@ class NoteContent extends Component {
     );
   }
 }
-/*
+
 NoteContent.propTypes = {
-  id: PropTypes.string,
+  id: PropTypes.number,
   title: PropTypes.string,
   onDeleteNote: PropTypes.func
 };
-*/
+
 export default NoteContent;
