@@ -12,10 +12,12 @@ class Note extends React.Component {
     const note = this.context.notes.filter(note => note.id === noteId)[0];
 
     if (note) {
-      const { content, name, id, folderId } = note;
-      const folder = this.context.folders.filter(
-        folder => folder.id === folderId
+      const { content, name, id, folderid } = note;
+
+      const folders = this.context.folders.filter(
+        folder => folder.id === folderid
       )[0];
+
       return (
         <div className="Individual-note-area">
           <Link to="/" className="Back-button">

@@ -72,7 +72,7 @@ export default class EditNote extends React.Component {
       })
       .then(() => {
         this.context.updateNote(newNote);
-        this.props.history.push("/");
+        window.location = "/";
       })
       .catch(error => {
         this.setState({ error });

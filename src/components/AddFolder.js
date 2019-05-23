@@ -28,7 +28,6 @@ export default class AddFolder extends React.Component {
     e.preventDefault();
     const { id, name } = this.state;
     const folder = { id, name };
-    console.log(folder);
     fetch(`http://localhost:8000/api/folders`, {
       method: "POST",
       body: JSON.stringify(folder),
@@ -47,7 +46,7 @@ export default class AddFolder extends React.Component {
           name: ""
         });
         this.context.addFolder(folder);
-        this.props.history.push("/");
+        window.location = "/";
       })
       .catch(error => {
         console.error({ error });

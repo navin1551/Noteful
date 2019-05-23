@@ -8,8 +8,7 @@ export default class AddNote extends React.Component {
     super(props);
     this.state = {
       content: "",
-      folderId: "",
-      id: "",
+      folderid: "",
       modified: new Date(),
       name: "",
       formValid: false,
@@ -36,8 +35,8 @@ export default class AddNote extends React.Component {
     });
   }
 
-  addFolderId(folderId) {
-    this.setState({ folderId });
+  addFolderId(folderid) {
+    this.setState({ folderid });
   }
 
   addModified(modified) {
@@ -55,7 +54,7 @@ export default class AddNote extends React.Component {
       modified,
       name
     }))(this.state);
-    console.log(note);
+
     fetch(`http://localhost:8000/api/notes`, {
       method: "POST",
       body: JSON.stringify(note),
@@ -72,13 +71,12 @@ export default class AddNote extends React.Component {
       .then(() => {
         this.setState({
           content: "",
-          folderId: "",
+          folderid: "",
           modified: new Date(),
-          id: "",
           name: ""
         });
         this.context.addNote(note);
-        this.props.history.push("/");
+        window.location = "/";
       })
       .catch(error => {
         console.error({ error });
