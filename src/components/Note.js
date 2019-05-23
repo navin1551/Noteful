@@ -12,10 +12,10 @@ class Note extends React.Component {
     const note = this.context.notes.filter(note => note.id === noteId)[0];
 
     if (note) {
-      const { content, name, id, folderid } = note;
+      const { content, name, id } = note;
 
       const folders = this.context.folders.filter(
-        folder => folder.id === folderid
+        folder => folder.id === this.props.match.params.folderId
       )[0];
 
       return (
