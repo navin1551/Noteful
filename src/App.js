@@ -17,7 +17,7 @@ class App extends React.Component {
 
   componentDidMount() {
     Promise.all([
-      fetch("https://shielded-bayou-42227.herokuapp.com/api/folders"), //https://shielded-bayou-42227.herokuapp.com/
+      fetch("https://shielded-bayou-42227.herokuapp.com/api/folders"),
       fetch("https://shielded-bayou-42227.herokuapp.com/api/notes")
     ])
       .then(([folderRes, noteRes]) => {
